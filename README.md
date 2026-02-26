@@ -84,7 +84,9 @@ curl http://localhost:8080/health
 Expected:
 ``` bash
 {"status":"ok"}
-📤 Create an Export
+```
+### 📤 Create an Export
+``` bash
 curl -X POST http://localhost:8080/exports/csv
 ```
 
@@ -100,11 +102,21 @@ Response:
 Filter by country and minimum lifetime value:
 ``` bash
 curl -X POST "http://localhost:8080/exports/csv?country_code=US&min_ltv=500"
+```
 🧩 Select Specific Columns
+
+``` bash
 curl -X POST "http://localhost:8080/exports/csv?columns=id,email,country_code"
-➗ Custom Delimiter
+```
+
+### ➗ Custom Delimiter
+
+``` bash
 curl -X POST "http://localhost:8080/exports/csv?delimiter=|"
-📊 Check Export Status
+```
+### 📊 Check Export Status
+
+``` bash
 curl http://localhost:8080/exports/<EXPORT_ID>/status
 ```
 #### Response includes:
@@ -179,7 +191,7 @@ API remains responsive
 ## 🔐 Environment Configuration
 
 #### Environment variables (example):
-``` json
+``` bash
 DATABASE_URL=postgresql+asyncpg://exporter:secret@db:5432/exports_db
 EXPORT_STORAGE_PATH=/app/exports
 ```
