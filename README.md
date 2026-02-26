@@ -82,14 +82,14 @@ curl http://localhost:8080/health
 ```
 
 Expected:
-``` json
+``` bash
 {"status":"ok"}
 📤 Create an Export
 curl -X POST http://localhost:8080/exports/csv
 ```
 
 Response:
-``` json
+``` bash
 {
   "exportId": "uuid",
   "status": "pending"
@@ -98,7 +98,7 @@ Response:
 ### 🔍 Create Export with Filters
 
 Filter by country and minimum lifetime value:
-``` json
+``` bash
 curl -X POST "http://localhost:8080/exports/csv?country_code=US&min_ltv=500"
 🧩 Select Specific Columns
 curl -X POST "http://localhost:8080/exports/csv?columns=id,email,country_code"
@@ -120,22 +120,22 @@ filePath
 downloadUrl
 
 ### ⬇️ Download Export
-``` json
+``` bash
 curl -OJ http://localhost:8080/exports/<EXPORT_ID>/download
 ```
 ### 🔄 Resume Download (Range Support)
-``` json
+```bash
 curl -H "Range: bytes=0-1023" \
 http://localhost:8080/exports/<EXPORT_ID>/download
 ```
 ### 🗜️ Download Compressed Version (Gzip)
-```json
+```bash
 curl -H "Accept-Encoding: gzip" \
 http://localhost:8080/exports/<EXPORT_ID>/download \
 --output export.gz
 ```
 ### ❌ Cancel an Export
-```json
+```bash
 curl -X DELETE http://localhost:8080/exports/<EXPORT_ID>
 ```
 ## ⚡ Performance Highlights
