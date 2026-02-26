@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+asyncpg
+sqlalchemy
+asyncpg
+python-dotenv
+aiofiles

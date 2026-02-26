@@ -1,0 +1,4 @@
+services:
+  app:
+    volumes:
+      - ./exports:/app/exports

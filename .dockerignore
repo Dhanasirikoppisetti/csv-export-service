@@ -1,0 +1,9 @@
+exports/
+postgres_data/
+.git/
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log

@@ -1,0 +1,42 @@
+services:
+
+  db:
+    image: postgres:15
+    container_name: export-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: exporter
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: exports_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./seeds:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U exporter -d exports_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: export-app
+    restart: unless-stopped
+    environment:
+      EXPORT_ORDERED: "false"
+      EXPORT_COUNT_MODE: "exact"
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./exports:/app/exports
+    mem_limit: 150m
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/ready"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
