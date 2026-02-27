@@ -241,10 +241,7 @@ Clean API architecture
 ## 🎥 Project Demo
 
 A complete walkthrough of the architecture, scalability decisions, and live system demonstration can be viewed below:
-
-[![Watch the Demo](https://youtu.be/VJyapMW0LcY)
-
-Or click here directly:
+ click here directly:
 👉 https://youtu.be/VJyapMW0LcY
 
 ## 👨‍💻 Author
